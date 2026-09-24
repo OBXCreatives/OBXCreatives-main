@@ -1,0 +1,147 @@
+.enquiry {
+  position: relative;
+  padding-block: 72px;
+}
+
+/* #quote lands on the same section as #contact. */
+.enquiry__anchor {
+  position: absolute;
+  top: 0;
+}
+
+.enquiry__grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 560px);
+  gap: 48px;
+  align-items: start;
+}
+
+.enquiry__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.enquiry__intro {
+  max-width: 32ch;
+  margin: 32px 0 0;
+}
+
+.enquiry__form {
+  display: grid;
+  gap: 28px;
+}
+
+.enquiry__kinds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.enquiry__kind {
+  position: relative;
+  cursor: pointer;
+}
+
+/* The radio stays in the accessibility tree and keyboard order; the pill shows its state. */
+.enquiry__kind input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.enquiry__kind:has(input:focus-visible) {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.enquiry__field {
+  display: grid;
+  gap: 10px;
+}
+
+.enquiry__field input,
+.enquiry__field textarea {
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  /* 16px keeps iOS Safari from zooming into the field on focus. */
+  font: 16px/1.4 var(--font-mono);
+}
+
+.enquiry__field textarea {
+  resize: vertical;
+}
+
+.enquiry__field input:focus-visible,
+.enquiry__field textarea:focus-visible {
+  outline: none;
+  border-bottom-width: 2px;
+  padding-bottom: 7px;
+}
+
+.enquiry__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.enquiry__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.enquiry__submit {
+  cursor: pointer;
+}
+
+.enquiry__submit:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.enquiry__status {
+  margin: 0;
+}
+
+.enquiry__status a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 809px) {
+  .enquiry {
+    padding-block: 48px;
+  }
+
+  .enquiry__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .enquiry__headline {
+    font-size: 64px;
+  }
+
+  .enquiry__intro {
+    margin-top: 24px;
+  }
+}

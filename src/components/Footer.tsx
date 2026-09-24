@@ -8,7 +8,7 @@ export default function Footer() {
   const fontLoaded = useFontLoaded(WORDMARK_FONT);
 
   return (
-    <footer className="footer" id="contact">
+    <footer className="footer">
       <div className="container footer__top">
         <ul className="footer__social mono-sm">
           {SOCIAL_LINKS.map((social) => (

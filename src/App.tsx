@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Enquiry from "./components/Enquiry";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <Enquiry />
       </main>
       <Footer />
     </>
