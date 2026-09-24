@@ -49,7 +49,7 @@
 
 /* Rolling links: each letter carries a copy of itself one line below (text-shadow). On hover
    the letters slide up one line in a left-to-right stagger, so the copy rolls into place,
-   while a solid rule draws in over a faint resting one. */
+   while a rule draws in underneath. */
 .nav__link--roll {
   --roll-ease: cubic-bezier(0.65, 0, 0.35, 1);
   --roll-duration: 350ms;
@@ -61,7 +61,6 @@
   text-decoration-line: none;
 }
 
-.nav__link--roll::before,
 .nav__link--roll::after {
   content: "";
   position: absolute;
@@ -70,13 +69,6 @@
   bottom: -6px;
   height: 1px;
   background: var(--ink);
-}
-
-.nav__link--roll::before {
-  opacity: 0.2;
-}
-
-.nav__link--roll::after {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--roll-duration) var(--roll-ease);
