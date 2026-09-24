@@ -19,11 +19,8 @@
   transition: border-color 300ms ease;
 }
 
-/* Keyboard users tabbing through the bar get the frame too. */
 .nav--framed,
-.nav:has(:focus-visible),
-.nav--framed .nav__frame,
-.nav:has(:focus-visible) .nav__frame {
+.nav--framed .nav__frame {
   border-color: var(--ink);
 }
 

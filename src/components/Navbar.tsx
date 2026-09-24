@@ -1,5 +1,4 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import { useTopOfPageActivity } from "../hooks/useTopOfPageActivity";
 import { ALETHIA_URL, NAV_LINKS } from "../site";
 import "./Navbar.css";
 
@@ -19,9 +18,9 @@ function RollingText({ text }: { text: string }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  // The frame lines show only while the visitor is active at the top of the page, or while
-  // the mobile menu is open (its rows need the rules around them).
-  const framed = useTopOfPageActivity() || open;
+  // The landing page shows the bar without its frame lines; the open mobile menu keeps them
+  // because its rows need the rules around them.
+  const framed = open;
 
   useEffect(() => {
     if (!open) return;
