@@ -1,6 +1,6 @@
 # Deployment handoff — obxcreatives.art
 
-Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Netlify build are live at `obxcreatives.netlify.app`. The domain itself is down: its Cloudflare A/AAAA records point at Cloudflare's own IPs, which returns error 1000 ("DNS points to prohibited IP") on both root and `www`.
+Status as of 2026-09-24 (second session). The site is live at `https://obxcreatives.art` with a Netlify certificate; DNS records are still grey-clouded, so Cloudflare's proxy (step 3.3 onwards) is the remaining work.
 
 ## Decisions already made (confirmed by the owner)
 
