@@ -1,0 +1,47 @@
+.coming-soon {
+  padding-block: 48px 72px;
+}
+
+.coming-soon p {
+  margin: 0;
+}
+
+.coming-soon__eyebrow {
+  margin-bottom: 24px;
+}
+
+.coming-soon__title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-kerning: none; /* see .hero__wordmark */
+}
+
+.coming-soon__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px 48px;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+
+.coming-soon__meta a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 809px) {
+  .coming-soon {
+    padding-block: 24px 48px;
+  }
+
+  .coming-soon__eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .coming-soon__meta {
+    flex-direction: column;
+    margin-top: 24px;
+  }
+}

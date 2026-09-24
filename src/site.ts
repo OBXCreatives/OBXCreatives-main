@@ -1,3 +1,7 @@
+// While true, the home page shows the Coming Soon section in place of the Hero.
+// Set to false to bring the Hero back; nothing else needs to change.
+export const COMING_SOON = true;
+
 export const ALETHIA_URL = "https://dev.obxalethia.art/";
 export const INSTAGRAM_URL = "https://www.instagram.com/obxcreatives/";
 
