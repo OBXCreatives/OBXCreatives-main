@@ -1,9 +1,24 @@
 .coming-soon {
-  padding-block: 48px 72px;
+  padding-bottom: 72px;
 }
 
 .coming-soon p {
   margin: 0;
+}
+
+/* The stage takes the bonsai's height; the title is pinned to a fraction of it, so the
+   trunk crosses "SOON" at the same spot at every width. */
+.coming-soon__stage {
+  --title-top: 70%;
+  position: relative;
+  margin-top: 24px;
+}
+
+.coming-soon__title-row {
+  position: absolute;
+  top: var(--title-top);
+  left: 0;
+  right: 0;
 }
 
 .coming-soon__title {
@@ -13,11 +28,29 @@
   font-kerning: none; /* see .hero__wordmark */
 }
 
+.coming-soon__bonsai {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: 1678px;
+  height: auto;
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+/* Wider than the image: fade the moss out instead of ending it on a hard edge. */
+@media (min-width: 1678px) {
+  .coming-soon__bonsai {
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
 .coming-soon__meta {
   display: flex;
   justify-content: space-between;
   gap: 16px 48px;
-  margin-top: 40px;
+  margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid var(--ink);
 }
@@ -29,11 +62,14 @@
 
 @media (max-width: 809px) {
   .coming-soon {
-    padding-block: 24px 48px;
+    padding-bottom: 48px;
+  }
+
+  .coming-soon__stage {
+    margin-top: 16px;
   }
 
   .coming-soon__meta {
     flex-direction: column;
-    margin-top: 24px;
   }
 }
