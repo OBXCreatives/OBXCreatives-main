@@ -1,6 +1,6 @@
 # Deployment handoff — obxcreatives.art
 
-Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Netlify build are live at `obxcreatives.netlify.app`. Cloudflare still points the domain at WordPress.
+Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Netlify build are live at `obxcreatives.netlify.app`. The domain itself is down: its Cloudflare A/AAAA records point at Cloudflare's own IPs, which returns error 1000 ("DNS points to prohibited IP") on both root and `www`.
 
 ## Decisions already made (confirmed by the owner)
 
@@ -24,8 +24,8 @@ Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Net
 
 1. ~~Link GitHub in Netlify~~ — done by the owner; pushes to `main` now build production. (The connector's own deploy command embeds a short-lived token in the shell command, which Claude Code's auto mode blocks.)
 2. ~~Custom domain on Netlify~~ — `obxcreatives.art` added; Netlify shows "Pending DNS verification". Ignore its "update DNS at your registrar" wording: DNS lives on Cloudflare, not WordPress.
-3. **Cloudflare**. This takes the WordPress site off the root.
-   1. DNS: replace the root A records with `CNAME obxcreatives.art → obxcreatives.netlify.app` (Cloudflare flattens it), and add `CNAME www → obxcreatives.netlify.app`. Both **DNS only (grey cloud)**.
+3. **Cloudflare**. WordPress is not reachable today (see status), so nothing working is lost.
+   1. DNS: delete all eight `A`/`AAAA` records on the root and `www` (a CNAME cannot coexist with them). Add `CNAME @ → apex-loadbalancer.netlify.com` (Netlify's documented apex target; Cloudflare flattens it) and `CNAME www → obxcreatives.netlify.app`. Both **DNS only (grey cloud)**. Keep the `n8n` CNAME.
    2. Wait for Netlify's Domain management page to verify DNS and show the Let's Encrypt certificate for both names.
    3. SSL/TLS → Overview → **Full (strict)**, then switch both records to **Proxied (orange)**. Full (strict) validates Netlify's certificate; proxying before it exists gives 526 errors. Setting the mode last also avoids touching the WordPress origin while it still serves.
    4. Leave these alone: MX `mx1/mx2.titan.email`, TXT SPF `v=spf1 include:spf.titan.email ~all`, `titan1._domainkey` DKIM and `_dmarc` records.
