@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { COUNTRIES, DEFAULT_COUNTRY, dialCode, isValidPhone, toInternational } from "../lib/phone";
 import { supabase } from "../lib/supabase";
-import { INSTAGRAM_URL } from "../site";
+import { INSTAGRAM_URL, SERVICES } from "../site";
 import "./Enquiry.css";
 
 type Kind = "contact" | "quote";
@@ -12,7 +13,7 @@ const KINDS: { value: Kind; label: string }[] = [
 ];
 
 // Match the column limits in the enquiries table so the browser stops overlong input first.
-const MAX = { name: 200, email: 320, message: 5000 };
+const MAX = { name: 200, email: 320, phone: 20, message: 5000 };
 
 function kindFromHash(): Kind | null {
   if (window.location.hash === "#quote") return "quote";
@@ -23,6 +24,7 @@ function kindFromHash(): Kind | null {
 export default function Enquiry() {
   const [kind, setKind] = useState<Kind>(() => kindFromHash() ?? "contact");
   const [status, setStatus] = useState<Status>("idle");
+  const [country, setCountry] = useState(DEFAULT_COUNTRY);
 
   // The CONTACT US and GET A QUOTE buttons link here; open the matching tab.
   useEffect(() => {
@@ -39,11 +41,24 @@ export default function Enquiry() {
     const form = event.currentTarget;
     const data = new FormData(form);
     const field = (name: string) => String(data.get(name) ?? "").trim();
+    const clear = () => {
+      form.reset();
+      // reset() puts the controlled country select back to its first value; keep state in step.
+      setCountry(DEFAULT_COUNTRY);
+      setStatus("sent");
+    };
 
     // Honeypot: the field is hidden from people, so only bots fill it. Pretend it worked.
     if (field("website")) {
-      form.reset();
-      setStatus("sent");
+      clear();
+      return;
+    }
+
+    const phoneInput = form.elements.namedItem("phone") as HTMLInputElement;
+    const phone = toInternational(phoneInput.value, country);
+    if (phone && !isValidPhone(phone)) {
+      phoneInput.setCustomValidity("Enter a valid phone number, or leave it blank.");
+      phoneInput.reportValidity();
       return;
     }
 
@@ -57,6 +72,8 @@ export default function Enquiry() {
       kind,
       name: field("name"),
       email: field("email"),
+      phone,
+      service: kind === "quote" ? field("service") : null,
       message: field("message"),
     });
 
@@ -64,8 +81,7 @@ export default function Enquiry() {
       setStatus("error");
       return;
     }
-    form.reset();
-    setStatus("sent");
+    clear();
   }
 
   return (
@@ -117,6 +133,57 @@ export default function Enquiry() {
             <span className="mono-sm">Email</span>
             <input name="email" type="email" autoComplete="email" maxLength={MAX.email} required />
           </label>
+
+          <div className="enquiry__field">
+            <label className="mono-sm" htmlFor="enquiry-phone">
+              Phone <span className="enquiry__optional">(optional)</span>
+            </label>
+            <div className="enquiry__phone">
+              {/* The native select sits invisibly over the +code so the closed state stays compact
+                  while the open list shows full country names. */}
+              <span className="enquiry__dial enquiry__chevron">
+                <span aria-hidden="true">+{dialCode(country)}</span>
+                <select
+                  aria-label="Country code"
+                  value={country}
+                  onChange={(event) => setCountry(event.target.value)}
+                >
+                  {COUNTRIES.map((c) => (
+                    <option key={c.iso} value={c.iso}>
+                      {c.name} (+{c.dial})
+                    </option>
+                  ))}
+                </select>
+              </span>
+              <input
+                id="enquiry-phone"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel-national"
+                maxLength={MAX.phone}
+                onInput={(event) => event.currentTarget.setCustomValidity("")}
+              />
+            </div>
+          </div>
+
+          {kind === "quote" && (
+            <label className="enquiry__field">
+              <span className="mono-sm">Service</span>
+              <span className="enquiry__chevron">
+                <select name="service" required defaultValue="">
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  {SERVICES.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+              </span>
+            </label>
+          )}
 
           <label className="enquiry__field">
             <span className="mono-sm">{kind === "quote" ? "Project details" : "Message"}</span>

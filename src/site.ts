@@ -5,6 +5,17 @@ export const COMING_SOON = true;
 export const ALETHIA_URL = "https://dev.obxalethia.art/";
 export const INSTAGRAM_URL = "https://www.instagram.com/obxcreatives/";
 
+// Choices in the quote form's service dropdown. The database accepts any label, so this
+// list can change without a migration.
+export const SERVICES = [
+  "Digital marketing & social media management",
+  "Art commissions",
+  "Murals & installations",
+  "Graphic design & branding",
+  "Web design & development",
+  "Something else",
+];
+
 export const NAV_LINKS = [
   { label: "HOME", href: "#home" },
   { label: "GALLERY", href: "#gallery" },
