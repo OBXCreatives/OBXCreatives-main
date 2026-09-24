@@ -18,6 +18,7 @@ Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Net
   - **Open risk:** free-tier projects pause after about a week without API requests. Page views don't touch Supabase, only form submissions do, so a quiet week pauses the project and the form shows its error message until someone restores it. Fix with a weekly keep-alive request (e.g. a Netlify scheduled function) or the Pro plan.
 - **Form**: `src/components/Enquiry.tsx`, section `#contact` (also answers to `#quote` and opens the quote tab). Honeypot field `website` absorbs simple bots.
 - **Keys**: `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (the `sb_publishable_…` key, not the legacy anon JWT) are set in Netlify (all contexts, builds scope) and in `.env.local` (gitignored). Never ship the secret/service-role key.
+- **DNS + certificate** (grey-cloud stage): root and `www` CNAMEs point at Netlify; Let's Encrypt certificate for both names issued 2026-09-24, valid to 2026-12-23; `www` and `http://` redirect to `https://obxcreatives.art`. Powered by Netlify badge turned off.
 - **Netlify**: site `obxcreatives` (id `188504c1-bd0f-49e5-8333-8d8e1d7d491f`, team `obxcreatives`, free plan) → `https://obxcreatives.netlify.app` once deployed. Team-login protection now applies to non-production deploys only, so production is public.
 
 ## Remaining work
@@ -28,8 +29,9 @@ Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Net
    1. DNS: delete all eight `A`/`AAAA` records on the root and `www` (a CNAME cannot coexist with them). Add `CNAME @ → apex-loadbalancer.netlify.com` (Netlify's documented apex target; Cloudflare flattens it) and `CNAME www → obxcreatives.netlify.app`. Both **DNS only (grey cloud)**. Keep the `n8n` CNAME.
    2. Wait for Netlify's Domain management page to verify DNS and show the Let's Encrypt certificate for both names.
    3. SSL/TLS → Overview → **Full (strict)**, then switch both records to **Proxied (orange)**. Full (strict) validates Netlify's certificate; proxying before it exists gives 526 errors. Setting the mode last also avoids touching the WordPress origin while it still serves.
-   4. Leave these alone: MX `mx1/mx2.titan.email`, TXT SPF `v=spf1 include:spf.titan.email ~all`, `titan1._domainkey` DKIM and `_dmarc` records.
-   5. Caching → Purge everything.
+   4. SSL/TLS → Edge Certificates → **Always Use HTTPS: On**. Once proxied, Cloudflare reaches Netlify over HTTPS even for `http://` visitors, so Netlify's own HTTP→HTTPS redirect no longer fires; Cloudflare has to do it. No loop risk under Full (strict).
+   5. Leave these alone: MX `mx1/mx2.titan.email`, TXT SPF `v=spf1 include:spf.titan.email ~all`, `titan1._domainkey` DKIM and `_dmarc` records.
+   6. Caching → Purge everything.
 4. **Verify**: `https://obxcreatives.art` returns 200 with a valid certificate, `server: cloudflare`, the Netlify build (not WordPress), `www` redirects to the root, and a form submission lands in `enquiries`.
 
 ## Pitfalls
