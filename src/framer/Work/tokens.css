@@ -1,0 +1,199 @@
+/**
+ * Project design tokens extracted from the Framer canvas.
+ * Import this file once at the root of your app so the
+ * --token-<uuid> CSS variables referenced by exported components resolve.
+ */
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/I11LrmuBDQZweplJ62KkVsklU5Y.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/UjFZPDy3qGuDktQM4q9CxhKfIa8.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/8exwVHJy2DhJ4N5prYlVMrEKmQ.woff2') format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/UTeedEK21hO5jDxEUldzdScUqpg.woff2') format('woff2');
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/Ig8B8nzy11hzIWEIYnkg91sofjo.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/qITWJ2WdG0wrgQPDb8lvnYnTXDg.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/qctQFoJqJ9aIbRSIp0AhCQpFxn8.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/ePuN3mCjzajIHnyCdvKBFiZkyY0.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/V3j1L0o5vPFKe26Sw4HcpXCfHo.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/F3kdpd2N0cToWV5huaZjjgM.woff2') format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/0iDmxkizU9goZoclqIqsV5rvETU.woff2') format('woff2');
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/r0mv3NegmA0akcQsNFotG32Las.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/iwWTDc49ENF2tCHbqlNARXw6Ug.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://framerusercontent.com/assets/Ii21jnSJkulBKsHHXKlapi7fv9w.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+/* Fallback @imports for families not covered by @font-face above. */
+/* These rely on Google Fonts publishing the family under the exact name; */
+/* will silently 404 for custom or non-Google fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter%20Tight:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --token-51170b41-dbf0-44c9-9f71-6387b73e409d: rgb(255, 255, 255);
+  --token-633663d4-6135-4d2d-a328-8707c8a7d2dc: rgb(255, 60, 0);
+  --token-dd3bc34b-f5c1-47d1-a245-8a68554e705e: rgb(0, 0, 0);
+  --token-cf55a365-3700-4540-906e-1cae02803a57: rgb(230, 230, 230);
+  --token-2f25ab63-251e-4c8a-a43c-96b3d2cd687b: rgb(179, 179, 179);
+  --token-8a650152-2d6e-46ea-8610-9e6ba7a473d7: rgb(26, 26, 26);
+  --token-5a129a99-4f5a-4917-a711-84cf650abf7d: rgb(255, 68, 0);
+  --token-1f5c424b-0c9b-4797-bb4e-e321473f3c05: rgb(128, 128, 128);
+  --token-5e4a9a17-35e5-4f0c-b88b-7a6cb15bd7f2: rgb(255, 255, 255);
+  --token-3a1165b6-a05f-48b5-a5c0-bcfa4ef17c48: rgb(5, 5, 5);
+  --token-e4214787-11d1-43fc-87e3-ba96a4a90ac7: rgb(26, 26, 26);
+  --token-bb4e057a-c85e-414d-8ab8-fef338857b90: rgb(255, 255, 255);
+}
+
+.text-style-LT8KBpgmm {
+  font-family: 'Inter', sans-serif;
+  font-size: 80px;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+}
+.text-style-yLR36sqPi {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 60px;
+  line-height: 1em;
+  color: rgb(255, 255, 255);
+}
+.text-style-umjrYL8bx {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 36px;
+  line-height: 1.4em;
+  color: rgb(0, 0, 0);
+}
+.text-style-YEJxzc_9L {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  line-height: 1.4em;
+  color: rgb(0, 0, 0);
+}
+.text-style-Xn6yDJ9zF {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 80px;
+  line-height: 1em;
+  color: rgb(255, 60, 0);
+}
+.text-style-fWFyOUgw_ {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 24px;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+}
+.text-style-xsJ3tN5Zl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 48px;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+}
+.text-style-knV_aOecC {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1em;
+  color: rgb(255, 255, 255);
+}
+.text-style-B0APIuXTl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 24px;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+}
+.text-style-bA9MxIcy7 {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1em;
+  color: rgb(0, 0, 0);
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Work",
+  "version": "1.0.0",
+  "description": "Exported Framer components: MenuLink, MenuLink2, MenuLink3, MenuLink4, Fittexteffect",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./MenuLink": {
+      "import": "./MenuLink.js",
+      "types": "./MenuLink.d.ts"
+    },
+    "./MenuLink2": {
+      "import": "./MenuLink2.js",
+      "types": "./MenuLink2.d.ts"
+    },
+    "./MenuLink3": {
+      "import": "./MenuLink3.js",
+      "types": "./MenuLink3.d.ts"
+    },
+    "./MenuLink4": {
+      "import": "./MenuLink4.js",
+      "types": "./MenuLink4.d.ts"
+    },
+    "./Fittexteffect": {
+      "import": "./Fittexteffect.js",
+      "types": "./Fittexteffect.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "framer-motion": ">=10.0.0"
+  },
+  "keywords": [
+    "framer",
+    "react",
+    "components",
+    "exported"
+  ],
+  "license": "MIT"
+}

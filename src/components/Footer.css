@@ -1,0 +1,96 @@
+.footer {
+  padding-top: 57px;
+  overflow: hidden;
+  color: var(--ink-soft);
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: start;
+}
+
+.footer__social {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__social a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.footer__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 31px;
+}
+
+.footer__disclaimer {
+  text-align: center;
+}
+
+/* The mockup crops HOBX at the page edge, ~74% of the way down the capitals.
+   Width-based aspect ratio keeps the same crop at every viewport size. */
+.footer__wordmark {
+  aspect-ratio: 1168 / 227;
+  margin-top: 39px;
+  overflow: hidden;
+  color: var(--ink);
+  font-kerning: none; /* see .hero__wordmark */
+}
+
+@media (max-width: 1060px) {
+  .footer__top {
+    grid-template-columns: 160px 1fr;
+    row-gap: 40px;
+  }
+
+  .footer__headline {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .footer__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__disclaimer {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer {
+    padding-top: 40px;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+
+  .footer__headline {
+    font-size: 36px;
+  }
+}

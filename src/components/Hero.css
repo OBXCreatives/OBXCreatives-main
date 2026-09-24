@@ -1,0 +1,31 @@
+.hero {
+  padding-block: 48px 72px;
+}
+
+.hero__wordmark {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  /* FitTextEffect measures the whole word but renders one span per letter, which drops
+     kerning; turning kerning off keeps the measured and rendered widths equal. */
+  font-kerning: none;
+}
+
+.hero__menu {
+  margin-top: 40px;
+  border-top: 1px solid var(--ink);
+}
+
+.hero__menu-row {
+  border-bottom: 1px solid var(--ink);
+}
+
+@media (max-width: 809px) {
+  .hero {
+    padding-block: 24px 48px;
+  }
+
+  .hero__menu {
+    margin-top: 24px;
+  }
+}
