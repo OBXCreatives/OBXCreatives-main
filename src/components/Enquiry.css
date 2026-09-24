@@ -43,14 +43,12 @@
   border: 0;
 }
 
-/* Same outline, radius and type as .btn. Equal columns let the thumb slide exactly one
-   column; 3px padding plus 5px label padding keeps the pill as tall as a .btn. */
+/* Same outline, radius, padding and type as .btn. Equal columns let the thumb slide exactly
+   one column; it fills its half edge to edge so it meets the outline with no gap. */
 .enquiry__switch {
-  --switch-inset: 3px;
   position: relative;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
-  padding: var(--switch-inset);
   border: 1px solid var(--ink-soft);
   border-radius: 999px;
 }
@@ -58,10 +56,8 @@
 .enquiry__switch::before {
   content: "";
   position: absolute;
-  top: var(--switch-inset);
-  bottom: var(--switch-inset);
-  left: var(--switch-inset);
-  width: calc(50% - var(--switch-inset));
+  inset: 0 auto 0 0;
+  width: 50%;
   border-radius: 999px;
   background: var(--ink-soft);
   transition: transform 250ms ease;
@@ -74,7 +70,7 @@
 .enquiry__kind {
   position: relative;
   z-index: 1;
-  padding: 5px 16px;
+  padding: 8px 16px;
   font-family: var(--font-mono);
   font-size: 14px;
   line-height: 1.2;
