@@ -38,17 +38,63 @@
 }
 
 .enquiry__kinds {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
   margin: 0;
   padding: 0;
   border: 0;
 }
 
+/* Same outline, radius and type as .btn. Equal columns let the thumb slide exactly one
+   column; 3px padding plus 5px label padding keeps the pill as tall as a .btn. */
+.enquiry__switch {
+  --switch-inset: 3px;
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  padding: var(--switch-inset);
+  border: 1px solid var(--ink-soft);
+  border-radius: 999px;
+}
+
+.enquiry__switch::before {
+  content: "";
+  position: absolute;
+  top: var(--switch-inset);
+  bottom: var(--switch-inset);
+  left: var(--switch-inset);
+  width: calc(50% - var(--switch-inset));
+  border-radius: 999px;
+  background: var(--ink-soft);
+  transition: transform 250ms ease;
+}
+
+.enquiry__switch[data-selected="quote"]::before {
+  transform: translateX(100%);
+}
+
 .enquiry__kind {
   position: relative;
+  z-index: 1;
+  padding: 5px 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
   cursor: pointer;
+  transition: color 250ms ease;
+}
+
+.enquiry__kind.is-selected {
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enquiry__switch::before,
+  .enquiry__kind {
+    transition: none;
+  }
 }
 
 /* The radio stays in the accessibility tree and keyboard order; the pill shows its state. */
@@ -60,7 +106,7 @@
   cursor: pointer;
 }
 
-.enquiry__kind:has(input:focus-visible) {
+.enquiry__switch:has(input:focus-visible) {
   outline: 1px solid var(--ink);
   outline-offset: 4px;
 }

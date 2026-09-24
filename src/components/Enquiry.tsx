@@ -88,21 +88,24 @@ export default function Enquiry() {
         <form className="enquiry__form" onSubmit={onSubmit}>
           <fieldset className="enquiry__kinds">
             <legend className="sr-only">Enquiry type</legend>
-            {KINDS.map((option) => (
-              <label
-                key={option.value}
-                className={`btn ${kind === option.value ? "btn--solid" : "btn--outline"} enquiry__kind`}
-              >
-                <input
-                  type="radio"
-                  name="kind"
-                  value={option.value}
-                  checked={kind === option.value}
-                  onChange={() => setKind(option.value)}
-                />
-                {option.label}
-              </label>
-            ))}
+            {/* One pill; the solid thumb slides under whichever option is selected. */}
+            <div className="enquiry__switch" data-selected={kind}>
+              {KINDS.map((option) => (
+                <label
+                  key={option.value}
+                  className={`enquiry__kind${kind === option.value ? " is-selected" : ""}`}
+                >
+                  <input
+                    type="radio"
+                    name="kind"
+                    value={option.value}
+                    checked={kind === option.value}
+                    onChange={() => setKind(option.value)}
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
           </fieldset>
 
           <label className="enquiry__field">

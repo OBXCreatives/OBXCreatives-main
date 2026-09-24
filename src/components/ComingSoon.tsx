@@ -10,8 +10,6 @@ export default function ComingSoon() {
   return (
     <section className="coming-soon" id="home">
       <div className="container">
-        <p className="coming-soon__eyebrow mono-sm">OBXCREATIVES® — new site in progress</p>
-
         <h1 className="coming-soon__title">
           <span className="sr-only">Coming soon</span>
           <div aria-hidden="true">

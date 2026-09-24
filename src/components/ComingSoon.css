@@ -6,10 +6,6 @@
   margin: 0;
 }
 
-.coming-soon__eyebrow {
-  margin-bottom: 24px;
-}
-
 .coming-soon__title {
   margin: 0;
   font-size: inherit;
@@ -34,10 +30,6 @@
 @media (max-width: 809px) {
   .coming-soon {
     padding-block: 24px 48px;
-  }
-
-  .coming-soon__eyebrow {
-    margin-bottom: 16px;
   }
 
   .coming-soon__meta {
