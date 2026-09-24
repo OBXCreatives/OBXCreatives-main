@@ -9,7 +9,7 @@ export default function ComingSoon() {
 
   return (
     <section className="coming-soon" id="home">
-      {/* The bonsai is stacked above the title, so its trunk passes in front of the letters. */}
+      {/* The title sits in front of the bonsai, resting on the moss. */}
       <div className="coming-soon__stage">
         <div className="container coming-soon__title-row">
           <h1 className="coming-soon__title">

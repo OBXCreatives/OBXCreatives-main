@@ -6,17 +6,18 @@
   margin: 0;
 }
 
-/* The stage takes the bonsai's height; the title is pinned to a fraction of it, so the
-   trunk crosses "SOON" at the same spot at every width. */
+/* The stage takes the bonsai's height. The title's bottom edge is pinned to the top of the
+   moss (a fraction of that height), so the letters rest on it at every width. */
 .coming-soon__stage {
-  --title-top: 57%;
+  --title-bottom: 70%;
   position: relative;
   margin-top: 24px;
 }
 
 .coming-soon__title-row {
   position: absolute;
-  top: var(--title-top);
+  z-index: 2;
+  bottom: calc(100% - var(--title-bottom));
   left: 0;
   right: 0;
 }
