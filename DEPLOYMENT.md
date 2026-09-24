@@ -35,6 +35,7 @@ Status as of 2026-09-24 (second session). Supabase, the enquiry form and the Net
 ## Pitfalls
 
 - Cloudflare proxy + Netlify needs Full (strict) **and** the domain registered on Netlify **and** an issued certificate, otherwise you get redirect loops or 525/526 errors.
+- Netlify only issues or installs a certificate once it sees the domain's DNS pointing at Netlify, so the records must be grey-clouded until the certificate exists. A Cloudflare Origin CA certificate uploaded to Netlify does not avoid this, because the same DNS check applies. Let's Encrypt certificates renew about every 90 days. If Netlify ever reports a renewal failure while proxied, grey-cloud both records until it renews, then switch back.
 - Vite inlines `VITE_*` variables at build time. If they are missing, the Supabase client is dropped from the bundle and the form only shows its error message. Check them with a read-back after setting them (the connector once reported success without saving), and redeploy after any change.
 - Cloudflare caching can serve stale assets after a deploy; purge the cache after DNS cutover.
 - The Cloudflare Developer Platform connector covers Workers/KV/R2/D1 only. It has no DNS or SSL tools, so step 3 is done in the Cloudflare dashboard.
