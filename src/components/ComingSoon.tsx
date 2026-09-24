@@ -32,11 +32,11 @@ export default function ComingSoon() {
         </div>
         <img
           className="coming-soon__bonsai"
-          src="/assets/bonsai-1678.webp"
-          srcSet="/assets/bonsai-840.webp 840w, /assets/bonsai-1678.webp 1678w"
-          sizes="(min-width: 1678px) 1678px, 100vw"
-          width={1678}
-          height={937}
+          src="/assets/bonsai-island-1517.webp"
+          srcSet="/assets/bonsai-island-760.webp 760w, /assets/bonsai-island-1517.webp 1517w"
+          sizes="(min-width: 1517px) 1517px, 100vw"
+          width={1517}
+          height={973}
           alt=""
         />
       </div>

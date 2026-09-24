@@ -9,7 +9,7 @@
 /* The stage takes the bonsai's height; the title is pinned to a fraction of it, so the
    trunk crosses "SOON" at the same spot at every width. */
 .coming-soon__stage {
-  --title-top: 70%;
+  --title-top: 57%;
   position: relative;
   margin-top: 24px;
 }
@@ -33,17 +33,10 @@
   z-index: 1;
   display: block;
   width: 100%;
-  max-width: 1678px;
+  max-width: 1517px;
   height: auto;
   margin-inline: auto;
   pointer-events: none;
-}
-
-/* Wider than the image: fade the moss out instead of ending it on a hard edge. */
-@media (min-width: 1678px) {
-  .coming-soon__bonsai {
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  }
 }
 
 .coming-soon__meta {
