@@ -47,6 +47,74 @@
   text-decoration-line: underline;
 }
 
+/* Rolling links: each letter carries a copy of itself one line below (text-shadow). On hover
+   the letters slide up one line in a left-to-right stagger, so the copy rolls into place,
+   while a solid rule draws in over a faint resting one. */
+.nav__link--roll {
+  --roll-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --roll-duration: 350ms;
+  position: relative;
+  display: inline-block;
+}
+
+.nav__link--roll:hover {
+  text-decoration-line: none;
+}
+
+.nav__link--roll::before,
+.nav__link--roll::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--ink);
+}
+
+.nav__link--roll::before {
+  opacity: 0.2;
+}
+
+.nav__link--roll::after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--roll-duration) var(--roll-ease);
+}
+
+.roll {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.roll__char {
+  display: inline-block;
+  white-space: pre;
+  text-shadow: 0 1.2em currentColor;
+  transition: transform var(--roll-duration) var(--roll-ease);
+  transition-delay: calc(var(--i) * 25ms);
+}
+
+.nav__link--roll:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+
+.nav__link--roll:is(:hover, :focus-visible) .roll__char {
+  transform: translateY(-1.2em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__link--roll::after,
+  .roll__char {
+    transition: none;
+  }
+
+  .nav__link--roll:is(:hover, :focus-visible) .roll__char {
+    transform: none;
+  }
+}
+
 .nav__actions {
   display: flex;
   align-items: center;

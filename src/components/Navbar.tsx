@@ -1,6 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { ALETHIA_URL, NAV_LINKS } from "../site";
 import "./Navbar.css";
+
+// One span per letter so the hover roll can stagger left to right. The link carries the
+// accessible name, so the letters are hidden from screen readers.
+function RollingText({ text }: { text: string }) {
+  return (
+    <span className="roll" aria-hidden="true">
+      {[...text].map((char, i) => (
+        <span key={i} className="roll__char" style={{ "--i": i } as CSSProperties}>
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -23,8 +37,13 @@ export default function Navbar() {
 
         <nav className="nav__links" aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <a key={link.label} className="nav__link" href={link.href}>
-              {link.label}
+            <a
+              key={link.label}
+              className="nav__link nav__link--roll"
+              href={link.href}
+              aria-label={link.label.charAt(0) + link.label.slice(1).toLowerCase()}
+            >
+              <RollingText text={link.label} />
             </a>
           ))}
           <span className="nav__divider" aria-hidden="true">
