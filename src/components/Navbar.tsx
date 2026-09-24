@@ -1,4 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
+import { useTopOfPageActivity } from "../hooks/useTopOfPageActivity";
 import { ALETHIA_URL, NAV_LINKS } from "../site";
 import "./Navbar.css";
 
@@ -18,6 +19,9 @@ function RollingText({ text }: { text: string }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  // The frame lines show only while the visitor is active at the top of the page, or while
+  // the mobile menu is open (its rows need the rules around them).
+  const framed = useTopOfPageActivity() || open;
 
   useEffect(() => {
     if (!open) return;
@@ -29,7 +33,7 @@ export default function Navbar() {
   const close = () => setOpen(false);
 
   return (
-    <header className="nav">
+    <header className={framed ? "nav nav--framed" : "nav"}>
       <div className="nav__frame">
         <a className="nav__logo" href="#home" aria-label="OBXCREATIVES home">
           <img src="/assets/obx-enso-logo.png" alt="" width={75} height={75} />

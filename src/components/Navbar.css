@@ -2,8 +2,10 @@
 .nav {
   position: relative;
   z-index: 10;
-  border: 1px solid var(--ink);
+  /* The frame lines stay transparent (so nothing shifts) until .nav--framed fades them in. */
+  border: 1px solid transparent;
   background: var(--paper);
+  transition: border-color 300ms ease;
 }
 
 .nav__frame {
@@ -13,7 +15,16 @@
   height: 85px;
   margin-inline: 10px;
   padding-inline: 21px;
-  border-inline: 1px solid var(--ink);
+  border-inline: 1px solid transparent;
+  transition: border-color 300ms ease;
+}
+
+/* Keyboard users tabbing through the bar get the frame too. */
+.nav--framed,
+.nav:has(:focus-visible),
+.nav--framed .nav__frame,
+.nav:has(:focus-visible) .nav__frame {
+  border-color: var(--ink);
 }
 
 .nav__logo {
