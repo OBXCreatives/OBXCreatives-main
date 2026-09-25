@@ -26,11 +26,11 @@ export const NAV_LINKS = [
   { label: "CONTACT", href: "#contact" },
 ];
 
-// Only Instagram has a known URL so far; the rest are placeholders.
+// Artsy and OpenSea don't have URLs yet; their "#" links are placeholders.
 export const SOCIAL_LINKS = [
   { label: "INSTAGRAM", href: INSTAGRAM_URL },
-  { label: "LINKEDIN", href: "#" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/kamogelo-obos-a9093a212/" },
   { label: "ARTSY", href: "#" },
-  { label: "TIK TOK", href: "#" },
+  { label: "TIK TOK", href: "https://www.tiktok.com/@obxcreatives" },
   { label: "OPENSEA", href: "#" },
 ];
