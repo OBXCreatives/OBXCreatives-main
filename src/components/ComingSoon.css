@@ -6,12 +6,13 @@
   margin: 0;
 }
 
-/* The stage takes the bonsai's height. The title's bottom edge is pinned to the top of the
-   moss (a fraction of that height), so the letters rest on it at every width. */
+/* The stage is exactly the bonsai image's box. The title's bottom edge is pinned to the top
+   of the moss (a fraction of that height), so the letters rest on it at every width. */
 .coming-soon__stage {
   --title-bottom: 78%;
   position: relative;
-  margin-top: 24px;
+  max-width: 1517px;
+  margin: 24px auto 0;
 }
 
 .coming-soon__title-row {
@@ -34,9 +35,19 @@
   z-index: 1;
   display: block;
   width: 100%;
-  max-width: 1517px;
   height: auto;
-  margin-inline: auto;
+  pointer-events: none;
+}
+
+/* The hill cut from the bonsai image at x 104-643, y 723-956 of its 1517 x 973 pixels,
+   placed back on that exact spot, in front of the title. */
+.coming-soon__moss-front {
+  position: absolute;
+  z-index: 3;
+  left: 6.8556%;
+  top: 74.3063%;
+  width: 35.5307%;
+  height: auto;
   pointer-events: none;
 }
 
